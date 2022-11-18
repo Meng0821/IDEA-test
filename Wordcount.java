@@ -1,6 +1,3 @@
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.StringTokenizer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
@@ -11,6 +8,10 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
+
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.StringTokenizer;
 public class WordCount {
     public WordCount() {
     }
@@ -21,7 +22,7 @@ public class WordCount {
             System.err.println("Usage: wordcount <in> [<in>...] <out>");
             System.exit(2);
         }
-        Job job = Job.getInstance(conf, "word count");
+        Job job = Job.getInstance(conf, "words count");
         job.setJarByClass(WordCount.class);
         job.setMapperClass(WordCount.TokenizerMapper.class);
         job.setCombinerClass(WordCount.IntSumReducer.class);
